@@ -13,7 +13,7 @@ export class HeroService {
 
   getHeroes(): Observable<IHero[]> {
     const heroes = of(HEROES);
-    this.messageService.add('HeroService :: fetched heroes');
+    this.messageService.add('HeroService : fetched heroes');
     return heroes;
   }
 }
