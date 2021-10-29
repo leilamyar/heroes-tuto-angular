@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,12 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
+  // @Input() titleFromApp: string = '';
+  // This one worked when home-component was a child of app-componenet
+  titleFromApp: any;
 
-  @Input() titleFromApp: string = '';
-
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data
+      .subscribe(data => {
+        this.titleFromApp = data.title;
+        // console.log('data received::', data);
+      });
   }
 
 }
